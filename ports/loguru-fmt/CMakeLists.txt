@@ -24,12 +24,15 @@ add_library(loguru ${loguru_sources})
 target_include_directories(loguru PUBLIC
                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
                                $<INSTALL_INTERFACE:include/loguru>)
+target_link_libraries(loguru PUBLIC fmt::fmt)
 
 if(UNIX)
     set(THREADS_PREFER_PTHREAD_FLAG ON)
     find_package(Threads REQUIRED)
     target_link_libraries(loguru PUBLIC Threads::Threads ${CMAKE_DL_LIBS})
 endif()
+
+find_package(fmt CONFIG REQUIRED)
 
 set(LOGURU_INCLUDE_INSTALL_DIR include/loguru CACHE PATH "Install directory for headers")
 if(INSTALL_HEADERS)
