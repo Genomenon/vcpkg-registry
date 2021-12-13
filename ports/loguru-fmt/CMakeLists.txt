@@ -12,18 +12,19 @@ set(loguru_sources
   loguru.cpp
   )
 
-add_compile_definitions(LOGURU_USE_FMTLIB=1
-  LOGURU_STACKTRACES=0
-  LOGURU_THREADNAME_WIDTH=8
-  LOGURU_WITH_STREAMS=1
-  LOGURU_VERBOSE_SCOPE_ENDINGS=1
-  LOGURU_SCOPE_TIME_PRECISION=6
+add_compile_definitions(
 )
 
 add_library(loguru ${loguru_sources})
 target_include_directories(loguru PUBLIC
                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
                                $<INSTALL_INTERFACE:include/loguru>)
+target_compile_definitions(loguru PUBLIC LOGURU_USE_FMTLIB=1
+                               LOGURU_STACKTRACES=0
+                               LOGURU_THREADNAME_WIDTH=8
+                               LOGURU_WITH_STREAMS=1
+                               LOGURU_VERBOSE_SCOPE_ENDINGS=1
+                               LOGURU_SCOPE_TIME_PRECISION=6)
 target_link_libraries(loguru PUBLIC fmt::fmt)
 
 if(UNIX)
