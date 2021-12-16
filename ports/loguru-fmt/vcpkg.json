@@ -1,7 +1,7 @@
 {
   "name": "loguru-fmt",
-  "version-string": "2.1.0",
-  "port-version": 3,
+  "version-string": "2.1.1-pre1",
+  "port-version": 0,
   "description": "A lightweight and flexible C++ logging library, configured to use fmtlib",
   "homepage": "https://github.com/emilk/loguru",
   "dependencies": [
